@@ -8,6 +8,7 @@
 //  Generated automatically by SplatNet3Gen, do not edit.
 //
 
+import Alamofire
 import Foundation
 
 public final class WeaponRecordQuery: RequestType {
@@ -18,6 +19,6 @@ public final class WeaponRecordQuery: RequestType {
     init() {}
     
     public struct Response: Codable {
-        public let URLConvertibles: [URL]
+        public let assetURLs: [URL]
     }
 }

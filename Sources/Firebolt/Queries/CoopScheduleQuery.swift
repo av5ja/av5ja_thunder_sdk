@@ -10,25 +10,11 @@
 
 import Alamofire
 import Foundation
-import SP3KeyHash
+import Thunder
 
 public final class CoopScheduleQuery: RequestType {
     public typealias ResponseType = Response
    
-    public let baseURL: URL = {
-#if DEBUG
-#if targetEnvironment(simulator)
-        .init(unsafeString: "http://localhost:3030")
-#else
-        .init(unsafeString: "https://dev.splatnet3.com")
-#endif
-#else
-        Bundle.main.env == .APP_STORE
-        ? .init(unsafeString: "https://api.splatnet3.com")
-        : .init(unsafeString: "https://dev.splatnet3.com")
-#endif
-    }()
-    public let path: String = "v3/schedules"
     public let method: HTTPMethod = .get
     public let dateEncodingStragety: JSONDecoder.DateDecodingStrategy = .atom
 

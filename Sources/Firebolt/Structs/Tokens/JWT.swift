@@ -38,7 +38,7 @@ public struct JWT<T: PayloadType>: Codable {
         }
 
         let data: [Data] = values.compactMap(\.base64DecodedString).compactMap({ $0.data(using: .utf8) })
-        let decoder: SPDecoder = .init(dateDecodingStrategy: .secondsSince1970)
+        let decoder: JSONDecoder = .init(dateDecodingStrategy: .secondsSince1970)
         self.rawValue = rawValue
         // swiftlint:disable:next force_try
         self.header = try! decoder.decode(Header.self, from: data[0])
@@ -59,7 +59,7 @@ public extension JWT {
         }
 
         let data: [Data] = values.compactMap(\.base64DecodedString).compactMap({ $0.data(using: .utf8) })
-        let decoder: SPDecoder = .init(dateDecodingStrategy: .secondsSince1970)
+        let decoder: JSONDecoder = .init(dateDecodingStrategy: .secondsSince1970)
         self.rawValue = rawValue
         self.header = try decoder.decode(Header.self, from: data[0])
         self.payload = try decoder.decode(T.self, from: data[1])

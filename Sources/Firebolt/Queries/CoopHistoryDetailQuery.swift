@@ -8,7 +8,9 @@
 //  Generated automatically by SplatNet3Gen, do not edit.
 //
 
+import Alamofire
 import Foundation
+import Thunder
 
 public final class CoopHistoryDetailQuery: RequestType {
     public typealias ResponseType = Response
@@ -16,7 +18,7 @@ public final class CoopHistoryDetailQuery: RequestType {
     public let hash: SHA256Hash = .CoopHistoryDetailQuery
     public let variables: [String: String]
 
-    init(resultId: CoopHistoryDetailId) {
+    init(resultId: CoopHistoryDetail.Id) {
         self.variables = [
             "coopHistoryDetailId": resultId.id
         ]
@@ -28,7 +30,7 @@ public final class CoopHistoryDetailQuery: RequestType {
         public let ikuraNum: Int
         public let goldenIkuraNum: Int
         public let goldenIkuraAssistNum: Int
-        public let schedule: StageScheduleQuery.Schedule
+        public let schedule: CoopScheduleQuery.Schedule
         public let jobResult: JobResult
         public let dangerRate: Decimal
         public let scale: [Int?]
@@ -53,6 +55,7 @@ public final class CoopHistoryDetailQuery: RequestType {
         public let failureWave: Int?
         public let isClear: Bool
         public let bossId: CoopBossInfo.Id?
+        // swiftlint:disable:next discouraged_optional_boolean
         public let isBossDefeated: Bool?
     }
 
@@ -76,7 +79,7 @@ public final class CoopHistoryDetailQuery: RequestType {
         public let bossKillCountsTotal: Int
         public let ikuraNum: Int
         public let isMyself: Bool
-        public let nameplate: NamePlate
+        public let nameplate: NamePlateBgInfo.Id
         public let helpCount: Int
         public let deadCount: Int
         public let specialId: WeaponInfoSpecial.Id?

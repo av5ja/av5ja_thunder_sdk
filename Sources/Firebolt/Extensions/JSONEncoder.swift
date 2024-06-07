@@ -8,6 +8,13 @@
 
 import Foundation
 
+extension JSONEncoder {
+    convenience init(dateEncodingStragety: JSONEncoder.DataEncodingStrategy) {
+        self.init()
+        self.dateEncodingStrategy = dateEncodingStrategy
+    }
+}
+
 public extension JSONEncoder.DateEncodingStrategy {
     /// 1970-01-01T00:00:00.000Z
     /// 1970-01-01T00:00:00.000+00:00

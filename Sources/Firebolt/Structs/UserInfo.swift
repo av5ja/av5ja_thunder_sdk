@@ -9,13 +9,13 @@
 import Alamofire
 import Foundation
 
-public struct UserInfo: Codable, AuthenticationCredential {
-    public struct Token: Codable {
-        public let token: String
-        public let expiresIn: Date
-        
-        public var isRefreshNeeded: Bool {
-            expiresIn < .init()
-        }
-    }
-}
+//public struct UserInfo: Codable, AuthenticationCredential {
+//    public struct Token: Codable {
+//        public let token: String
+//        public let expiresIn: Date
+//        
+//        public var isRefreshNeeded: Bool {
+//            expiresIn < .init()
+//        }
+//    }
+//}

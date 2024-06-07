@@ -8,6 +8,7 @@
 //  Generated automatically by SplatNet3Gen, do not edit.
 //
 
+import Alamofire
 import Foundation
 
 public final class CoopHistoryQuery: RequestType {
@@ -22,7 +23,7 @@ public final class CoopHistoryQuery: RequestType {
     }
 
     public struct CoopHistory: Codable {
-        public let schedule: StageScheduleQuery.Schedule
-        public let results: [CoopHistoryDetailId]
+        public let schedule: CoopScheduleQuery.Schedule
+        public let results: [CoopHistoryDetail.Id]
     }
 }

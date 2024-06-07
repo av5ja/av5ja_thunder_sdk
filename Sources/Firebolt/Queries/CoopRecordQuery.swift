@@ -8,7 +8,9 @@
 //  Generated automatically by SplatNet3Gen, do not edit.
 //
 
+import Alamofire
 import Foundation
+import Thunder
 
 public final class CoopRecordQuery: RequestType {
     public typealias ResponseType = Response
@@ -20,7 +22,7 @@ public final class CoopRecordQuery: RequestType {
     public struct Response: Codable {
         public let stageRecords: [CoopStageRecord]
         public let enemyRecords: [CoopEnemyRecord]
-        public let URLConvertibles: [URL]
+        public let assetURLs: [URL]
     }
 
     public struct CoopEnemyRecord: Codable {
@@ -30,7 +32,7 @@ public final class CoopRecordQuery: RequestType {
 
     public struct CoopStageRecord: Codable {
         public let goldenIkuraNum: Int?
-        public let grade: CoopGradeId
+        public let grade: CoopGrade.Id
         public let gradePoint: Int
         public let stageId: CoopStage.Id
         public let startTime: Date?

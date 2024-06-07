@@ -29,6 +29,18 @@ public protocol RequestType: URLRequestConvertible, RequestInterceptor {
 }
 
 public extension RequestType {
+    var baseURL: URL {
+        .init(unsafeString: "https://api.lp1.av5ja.srv.nintendo.net/")
+    }
+    
+    var path: String {
+        ""
+    }
+    
+    var method: HTTPMethod {
+        .post
+    }
+    
     /// パラメータのエンコード方式
     var encoding: ParameterEncoding {
         switch method {

@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-//public struct UserInfo: Codable, AuthenticationCredential {
+// public struct UserInfo: Codable, AuthenticationCredential {
 //    public struct Token: Codable {
 //        public let token: String
 //        public let expiresIn: Date
@@ -18,4 +18,4 @@ import Foundation
 //            expiresIn < .init()
 //        }
 //    }
-//}
+// }

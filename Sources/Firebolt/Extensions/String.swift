@@ -1,8 +1,9 @@
 //
-//  File.swift
-//  
+//  String.swift
+//  Firebolt
 //
-//  Created by devonly on 2024/06/07.
+//  Created by devonly on 2021/11/20.
+//  Copyright © 2021 Magi, Corporation. All rights reserved.
 //
 
 import Foundation

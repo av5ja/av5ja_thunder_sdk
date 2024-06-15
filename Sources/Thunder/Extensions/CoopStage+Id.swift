@@ -35,6 +35,10 @@ extension CoopStage {
             ]
         }
         
+        public var isBigRun: Bool {
+            rawValue >= 100
+        }
+        
         public var rawValue: RawValue {
             switch self {
             case .Carousel:

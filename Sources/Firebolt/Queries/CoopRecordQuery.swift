@@ -12,9 +12,10 @@ import Alamofire
 import Foundation
 import Thunder
 
-public final class CoopRecordQuery: RequestType {
+public final class CoopRecordQuery: DispatchType {
     public typealias ResponseType = Response
 
+    public let version: Int = 1
     public let hash: SHA256Hash = .CoopRecordQuery
 
     init() {}

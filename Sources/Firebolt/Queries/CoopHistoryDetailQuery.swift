@@ -69,7 +69,24 @@ public final class CoopHistoryDetailQuery: RequestType {
         public let waterLevel: CoopWaterLevel.Id
         public let isClear: Bool
     }
+    
+    public struct TextColor: Codable {
+        public let a: Decimal
+        public let b: Decimal
+        public let g: Decimal
+        public let r: Decimal
+    }
+    
+    public struct Background: Codable {
+        public let textColor: TextColor
+        public let id: NamePlateBgInfo.Id
+    }
 
+    public struct Nameplate: Codable {
+        public let badges: [BadgeInfo.Id?]
+        public let background: Background
+    }
+    
     public struct MemberResult: Codable {
         public let hash: String
         public let nplnUserId: String
@@ -79,7 +96,7 @@ public final class CoopHistoryDetailQuery: RequestType {
         public let bossKillCountsTotal: Int
         public let ikuraNum: Int
         public let isMyself: Bool
-        public let nameplate: NamePlateBgInfo.Id
+        public let nameplate: Nameplate
         public let helpCount: Int
         public let deadCount: Int
         public let specialId: WeaponInfoSpecial.Id?

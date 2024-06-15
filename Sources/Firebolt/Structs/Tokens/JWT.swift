@@ -1,12 +1,13 @@
 //
 //  JWT.swift
-//  SP3Request
+//  Firebolt
 //
 //  Created by devonly on 2022/11/26.
 //  Copyright © 2023 Magi, Corporation. All rights reserved.
 //
 
 import Foundation
+import Mudmouth
 
 public struct JWT<T: PayloadType>: Codable {
     /// ヘッダー

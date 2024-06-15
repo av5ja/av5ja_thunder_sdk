@@ -25,7 +25,7 @@ public extension StaticMedia {
         "static/media"
     }
     
-    var URLConvertible: URL {
+    var assetURL: URL {
         Self.baseURL.appendingPathComponent(path).appendingPathComponent(rawValue)
     }
     

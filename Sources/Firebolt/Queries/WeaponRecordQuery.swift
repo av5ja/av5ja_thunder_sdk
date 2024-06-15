@@ -11,9 +11,10 @@
 import Alamofire
 import Foundation
 
-public final class WeaponRecordQuery: RequestType {
+public final class WeaponRecordQuery: DispatchType {
     public typealias ResponseType = Response
 
+    public let version: Int = 1
     public let hash: SHA256Hash = .WeaponRecordQuery
 
     init() {}

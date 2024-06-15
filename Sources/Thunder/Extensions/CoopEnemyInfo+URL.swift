@@ -15,3 +15,16 @@ extension CoopEnemyInfo.Key: URLConvertible {
         "resources/prod/v2/coop_enemy_img/"
     }
 }
+
+extension CoopEnemyInfo.Id: URLConvertible {
+    public var path: String {
+        "resources/prod/v2/coop_enemy_img/"
+    }
+    
+    public var assetURL: URL? {
+        guard let index: Int = Self.allCases.firstIndex(of: self) else {
+            return nil
+        }
+        return CoopEnemyInfo.Key.allCases[index].assetURL
+    }
+}

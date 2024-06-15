@@ -15,10 +15,10 @@ extension JSONEncoder {
     }
 }
 
-public extension JSONEncoder.DateEncodingStrategy {
+extension JSONEncoder.DateEncodingStrategy {
     /// 1970-01-01T00:00:00.000Z
     /// 1970-01-01T00:00:00.000+00:00
-    static let atom: Self = custom {
+    public static let atom: Self = custom {
         let formatter: ISO8601DateFormatter = .init()
         formatter.formatOptions.insert(.withFractionalSeconds)
         let stringValue: String = formatter.string(from: $0)

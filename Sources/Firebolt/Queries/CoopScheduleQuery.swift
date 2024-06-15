@@ -12,10 +12,9 @@ import Alamofire
 import Foundation
 import Thunder
 
-public final class CoopScheduleQuery: RequestType {
+public final class CoopScheduleQuery: URLRequestConvertible {
     public typealias ResponseType = Response
    
-    public let method: HTTPMethod = .get
     public let dateEncodingStragety: JSONDecoder.DateDecodingStrategy = .atom
 
     init() {}
@@ -26,13 +25,21 @@ public final class CoopScheduleQuery: RequestType {
 
     public struct Schedule: Codable {
         public let id: String
-        public let startTime: Date?
-        public let endTime: Date?
+        @NullCodable public var startTime: Date?
+        @NullCodable public var endTime: Date?
         public let mode: CoopMode
         public let rule: CoopRule
         public let stageId: CoopStage.Id
-        public let bossId: CoopBossInfo.Id?
+        @NullCodable public var bossId: CoopBossInfo.Id?
         public let weaponList: [WeaponInfoMain.Id]
         public let rareWeapons: [WeaponInfoMain.Id]
+    }
+    
+    public func asURLRequest() throws -> URLRequest {
+        let url: URL = .init(unsafeString: "https://api.splatnet3.com/v3/schedules")
+        var request: URLRequest = .init(url: url)
+        request.method = .get
+        request.timeoutInterval = TimeInterval(10)
+        return request
     }
 }

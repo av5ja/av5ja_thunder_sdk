@@ -15,3 +15,21 @@ extension WeaponInfoMain.Key: URLConvertible {
         "resources/prod/v2/weapon_illust/"
     }
 }
+
+extension WeaponInfoMain.Id: URLConvertible {
+    public var path: String {
+        switch self {
+        case .RandomGold, .RandomGreen:
+            return "resources/prod/v2/ui_img/"
+        default:
+            return "resources/prod/v2/weapon_illust/"
+        }
+    }
+    
+    public var assetURL: URL? {
+        guard let index: Int = WeaponInfoMain.Id.allCases.firstIndex(of: self) else {
+            return nil
+        }
+        return WeaponInfoMain.Key.allCases[index].assetURL
+    }
+}

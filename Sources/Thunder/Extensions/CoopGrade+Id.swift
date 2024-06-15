@@ -1,5 +1,5 @@
 //
-//  CoopGrade.swift
+//  CoopGrade+Id.swift
 //  Thunder
 //
 //  Created by devonly on 2024/05/05.
@@ -66,3 +66,4 @@ public extension CoopGrade {
         case Undefined(RawValue)
     }
 }
+ 

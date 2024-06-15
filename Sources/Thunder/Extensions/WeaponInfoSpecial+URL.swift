@@ -15,3 +15,16 @@ extension WeaponInfoSpecial.Key: URLConvertible {
         "resources/prod/v2/special_img/blue"
     }
 }
+
+extension WeaponInfoSpecial.Id: URLConvertible {
+    public var path: String {
+        "resources/prod/v2/special_img/blue"
+    }
+    
+    public var assetURL: URL?  {
+        guard let index: Int = WeaponInfoSpecial.Id.allCases.firstIndex(of: self) else {
+            return WeaponInfoSpecial.Key.RandomGreen.assetURL
+        }
+        return WeaponInfoSpecial.Key.allCases[index].assetURL
+    }
+}

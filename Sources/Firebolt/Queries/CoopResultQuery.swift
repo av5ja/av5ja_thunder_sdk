@@ -37,9 +37,9 @@ public final class CoopResultQuery: URLRequestConvertible {
             "histories": histories.map({ history in
                 [
                     "schedule": history.schedule.dictionaryObject,
-                    "results": history.results.compactMap(\.dictionaryObject)
+                    "results": history.results.compactMap(\.dictionaryObject),
                 ]
-            })
+            }),
         ]
         return try JSONEncoding.default.encode(request, with: parameters)
     }

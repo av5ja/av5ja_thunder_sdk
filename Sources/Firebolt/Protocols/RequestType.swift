@@ -77,8 +77,8 @@ public extension RequestType {
                 "persistedQuery": [
                     "version": 1,
                     "sha256Hash": hash.rawValue,
-                ] as [String: Any]
-            ]
+                ] as [String: Any],
+            ],
         ]
         return try encoding.encode(request, with: parameters)
     }

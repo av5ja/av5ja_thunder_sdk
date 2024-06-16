@@ -136,7 +136,7 @@ open class Firebolt: Session {
         })
     }
     
-    static public func configure(response: UNNotificationResponse) -> Bool {
+    public static func configure(response: UNNotificationResponse) -> Bool {
         // Keychainに保存しておけばどこからでも呼び出せるので
         let keychain: Keychain = .init()
         

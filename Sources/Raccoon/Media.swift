@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Thunder
 
 /// StaticMedia from SplatNet 3
 /// https://api.lp1.av5ja.srv.nintendo.net/static/css/main.21288b21.css
@@ -23,15 +24,54 @@ public enum Media {
             case Splatfont2 = "eb82d017016045bf998cade4dac1ec22.woff2"
         }
         
-        public enum PNG: String, StaticMedia {
+        public enum PNG: RawRepresentable, StaticMedia {
+            public typealias RawValue = String
+            
             public var path: String {
                 "images/bundled"
             }
             
-            case GolenIkura = "3aa6fb4ec1534196ede450667c1183dc.png"
+            case GolenIkura
             //            case Ikura = "78f61aacb1fbb50f345cdf3016aa309e.png"
-            case Ikura = "efe826cfd1d44d19153f08e19f6caa2a.png"
-            case Refresh = "50732dded088309dfb8f436f3885e782.png"
+            case Ikura
+            case Refresh
+            case Rescue(Species)
+            case Death(Species)
+            
+            public static let allCases: [Media.SP2.PNG] = [
+                .Ikura,
+                .GolenIkura,
+                .Refresh,
+                .Rescue(.Inkling),
+                .Rescue(.Octoling),
+                .Death(.Inkling),
+                .Death(.Octoling),
+            ]
+            
+            public var rawValue: String {
+                switch self {
+                case .GolenIkura:
+                    return "3aa6fb4ec1534196ede450667c1183dc.png"
+                case .Ikura:
+                    return "efe826cfd1d44d19153f08e19f6caa2a.png"
+                case .Refresh:
+                    return "50732dded088309dfb8f436f3885e782.png"
+                case .Rescue(let value):
+                    switch value {
+                    case .Inkling:
+                        return "c003ffe0a5580e4c8b1bc9df1e0a30d2.png"
+                    default:
+                        return "76f0143bbd579054410f1de8445f9dd4.png"
+                    }
+                case .Death(let value):
+                    switch value {
+                    case .Inkling:
+                        return "5d447dcfcb3b0c31ffb2efca58a6e799.png"
+                    default:
+                        return "fa7045022d3183caac60f7f129bce8ec.png"
+                    }
+                }
+            }
         }
     }
     

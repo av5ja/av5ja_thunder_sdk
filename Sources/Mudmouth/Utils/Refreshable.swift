@@ -41,7 +41,7 @@ public extension View {
                     style: .iOS17AppleMusic,
                     haptic: .success
                 )
-            } catch (let error as SPError) {
+            } catch let error as SPError {
                 if error == .Unauthorized {
                     let manager: RequestManager = .init()
                     try? await manager.startVPNTunnel()
@@ -54,7 +54,7 @@ public extension View {
                         haptic: .error
                     )
                 }
-            } catch (let error) {
+            } catch {
                 AlertKitAPI.present(
                     title: "Error",
                     subtitle: error.localizedDescription,

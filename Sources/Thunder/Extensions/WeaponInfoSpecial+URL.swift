@@ -21,7 +21,7 @@ extension WeaponInfoSpecial.Id: URLConvertible {
         "resources/prod/v2/special_img/blue"
     }
     
-    public var assetURL: URL?  {
+    public var assetURL: URL? {
         guard let index: Int = WeaponInfoSpecial.Id.allCases.firstIndex(of: self) else {
             return WeaponInfoSpecial.Key.RandomGreen.assetURL
         }

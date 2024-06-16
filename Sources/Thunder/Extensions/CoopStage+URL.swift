@@ -16,13 +16,12 @@ extension CoopStage.Key: URLConvertible {
     }
 }
 
-
 extension CoopStage.Id: URLConvertible {
     public var path: String {
         "resources/prod/v2/stage_img/icon/high_resolution/"
     }
     
-    public var assetURL: URL?  {
+    public var assetURL: URL? {
         guard let index: Int = Self.allCases.firstIndex(of: self) else {
             return nil
         }

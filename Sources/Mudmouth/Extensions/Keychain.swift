@@ -32,7 +32,7 @@ extension Keychain {
                     return nil
                 }
                 return try decoder.decode(Configuration.self, from: data)
-            } catch (let error) {
+            } catch {
                 Logger.error(error.localizedDescription)
                 return nil
             }
@@ -46,7 +46,7 @@ extension Keychain {
                 }
                 let data: Data = try encoder.encode(newValue)
                 return try set(data, key: identifier)
-            } catch (let error) {
+            } catch {
                 Logger.error(error.localizedDescription)
                 return
             }

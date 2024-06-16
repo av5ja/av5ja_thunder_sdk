@@ -36,7 +36,7 @@ public final class CoopHistoryDetailQuery: RequestType {
         public let scale: [Int?]
         public let bossCounts: [Int]
         public let bossKillCounts: [Int]
-        @NullCodable public var scenarioCode: String?
+        public let scenarioCode: String?
         public let playTime: Date
         public let myResult: MemberResult
         public let otherResults: [MemberResult]

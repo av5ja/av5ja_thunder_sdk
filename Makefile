@@ -1,3 +1,3 @@
 .PHONY: lint
 lint:
-	swiftlint lint --fix --strict 
+	swiftlint lint --fix

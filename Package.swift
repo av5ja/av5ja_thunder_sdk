@@ -48,6 +48,9 @@ let package = Package(
             ]),
         .target(
             name: "Raccoon",
+            dependencies: [
+                "Thunder"
+            ],
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
             ]),
@@ -68,6 +71,7 @@ let package = Package(
                 "BetterSafariView",
                 "KeychainAccess",
                 "AlertKit",
+                "Thunder",
                 .product(name: "X509", package: "swift-certificates"),
                 .product(name: "NIO", package: "swift-nio"),
                 .product(name: "NIOCore", package: "swift-nio"),

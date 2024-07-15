@@ -48,7 +48,7 @@ extension String {
     }
 
     /// 正規表現でマッチングし、合致した文字列を全て返す
-    func capture(pattern: String) -> [String] {
+    public func capture(pattern: String) -> [String] {
         guard let regex = try? NSRegularExpression(pattern: pattern) else {
             return []
         }

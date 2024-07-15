@@ -39,6 +39,27 @@ extension CoopStage {
             rawValue >= 100
         }
         
+        public static let regular: [Self] = [
+            .Shakedent,
+            .Shakehighway,
+            .Shakelift,
+            .Shakerail,
+            .Shakeship,
+            .Shakespiral,
+            .Shakeup,
+        ]
+        
+        public static let bigRun: [Self] = [
+            .Carousel,
+            .District,
+            .Factory,
+            .Section,
+            .Temple,
+            .Tutorial,
+            .Unknown,
+            .Upland,
+        ]
+        
         public var rawValue: RawValue {
             switch self {
             case .Carousel:

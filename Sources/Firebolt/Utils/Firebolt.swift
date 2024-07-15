@@ -11,11 +11,13 @@ import Foundation
 import KeychainAccess
 import Mudmouth
 import UserNotifications
+import SwiftyLogger
 
 open class Firebolt: Session {
     private let keychain: Keychain = .init()
     internal let encoder: JSONEncoder = .init()
     internal let decoder: JSONDecoder = .init(dateDecodingStrategy: .atom)
+    
     private var credential: UserInfo? {
         get {
             try? keychain.get()
@@ -24,6 +26,7 @@ open class Firebolt: Session {
             try? keychain.set(newValue)
         }
     }
+    
     private var authenticator: AuthenticationInterceptor<Firebolt>? {
         AuthenticationInterceptor(authenticator: self, credential: credential)
     }
@@ -34,7 +37,10 @@ open class Firebolt: Session {
     private func fetch<T: RequestType>(_ request: T) async throws -> Data {
         let result = await self.request(request, interceptor: authenticator)
             .cURLDescription(calling: { request in
-                print(request)
+                SwiftyLogger.debug(request)
+//                #if targetEnvironment(simulator)
+//                SwiftyLogger.debug(request)
+//                #endif
             })
             .serializingData(automaticallyCancelling: true)
             .response
@@ -43,7 +49,6 @@ open class Firebolt: Session {
         case .success(let success):
             return success
         case .failure(let failure):
-            print(failure)
             throw SPError.Unauthorized
         }
     }
@@ -98,12 +103,12 @@ open class Firebolt: Session {
             .value
     }
     
-    open func getCoopResults() async throws -> CoopResultQuery.Response<CoopHistoryDetailQuery.Response> {
+    open func getCoopResults(lastPlayedTime: Date = .init(timeIntervalSince1970: 0)) async throws -> CoopResultQuery.Response<CoopHistoryDetailQuery.Response> {
         let histories: [CoopHistoryQuery.CoopHistory] = try await getCoopHistory().histories
         let parameters: [CoopResultQuery.CoopHistory<Data>] = try await withThrowingTaskGroup(of: CoopResultQuery.CoopHistory<Data>.self, body: { task in
             histories.forEach({ history in
                 task.addTask(priority: .background, operation: { [self] in
-                    CoopResultQuery.CoopHistory(schedule: history.schedule, results: try await getCoopResults(history: history))
+                    CoopResultQuery.CoopHistory(schedule: history.schedule, results: try await getCoopResults(history: history, lastPlayedTime: lastPlayedTime))
                 })
             })
             return try await task.reduce(into: [CoopResultQuery.CoopHistory<Data>](), { results, result in
@@ -118,14 +123,13 @@ open class Firebolt: Session {
         case .success(let success):
             return success
         case .failure(let failure):
-            print(failure)
             throw SPError.EncodingFailed
         }
     }
 
-    func getCoopResults(history: CoopHistoryQuery.CoopHistory) async throws -> [Data] {
+    func getCoopResults(history: CoopHistoryQuery.CoopHistory, lastPlayedTime: Date = .init(timeIntervalSince1970: 0)) async throws -> [Data] {
         try await withThrowingTaskGroup(of: Data.self, body: { task in
-            history.results.forEach({ resultId in
+            history.results.filter({ $0.playTime > lastPlayedTime}).forEach({ resultId in
                 task.addTask(priority: .background, operation: { [self] in
                     try await getCoopHistoryDetail(resultId: resultId)
                 })
@@ -159,7 +163,6 @@ open class Firebolt: Session {
 
 extension Firebolt: Authenticator {
     public func apply(_ credential: UserInfo, to urlRequest: inout URLRequest) {
-        print(credential.gameWebToken.rawValue)
         #if targetEnvironment(simulator)
         urlRequest.headers.add(.authorization(bearerToken: SecretKeys.bulletToken))
         urlRequest.headers.add(.userAgent(SecretKeys.userAgent))

@@ -65,6 +65,7 @@ internal final class RequestManager: CertificateManager {
         let encoder: JSONEncoder = .init()
         provider.isEnabled = true
         try await provider.saveToPreferences()
+        let certificate = configuration.generate()
         let data: Data = try encoder.encode(configuration.generate())
         try provider.connection.startVPNTunnel(options: [
             NEVPNConnectionStartOptionPassword: data as NSObject

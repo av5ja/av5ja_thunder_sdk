@@ -12,17 +12,22 @@ import Foundation
 
 extension WeaponInfoMain.Key: URLConvertible {
     public var path: String {
-        "resources/prod/v2/weapon_illust/"
+        switch self {
+        case .RandomGold, .RandomGreen, .Dummy:
+            return "resources/prod/v2/ui_img"
+        default:
+            return "resources/prod/v2/weapon_illust"
+        }
     }
 }
 
 extension WeaponInfoMain.Id: URLConvertible {
     public var path: String {
         switch self {
-        case .RandomGold, .RandomGreen:
-            return "resources/prod/v2/ui_img/"
+        case .RandomGold, .RandomGreen, .Dummy:
+            return "resources/prod/v2/ui_img"
         default:
-            return "resources/prod/v2/weapon_illust/"
+            return "resources/prod/v2/weapon_illust"
         }
     }
     

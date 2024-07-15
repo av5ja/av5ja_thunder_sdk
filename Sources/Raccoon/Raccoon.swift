@@ -10,6 +10,7 @@ import CoreText
 import Foundation
 import OSLog
 import UIKit
+import SwiftyLogger
 
 public enum Raccoon {
     private static let manager: FileManager = .default
@@ -46,7 +47,7 @@ public enum Raccoon {
         return .init(js: js, css: css)
     }
     
-    public static func configure() async throws {
+    private static func configure() async throws {
         try await _configure()
         await CTFontManagerRegisterFontDescriptors([UIFont.SP1, UIFont.SP2] as CFArray, .process, true)
     }
@@ -67,16 +68,16 @@ public enum Raccoon {
                     try write(data: data)
                 }
                 // static/media
-                let URLConvertibles: [URL] =
+                let assetURLs: [URL] =
                     stringValue.capture(pattern: #"static/media/[\w\-\/.]*"#)
                         .compactMap({ .init(string: "https://api.lp1.av5ja.srv.nintendo.net/\($0)") })
                     + stringValue.capture(pattern: #"[\w]*/bundled/[\w\-\/.]*"#)
                         .compactMap({ .init(string: "https://app.splatoon2.nintendo.net/\($0)") })
                 let results: [Raccoon.Response] = try await withThrowingTaskGroup(of: Raccoon.Response.self, body: { task in
-                    URLConvertibles.forEach({ URLConvertible in
+                    assetURLs.forEach({ assetURL in
                         task.addTask(priority: .background, operation: { [self] in
-                            let data: Data = try await fetch(url: URLConvertible)
-                            return .init(url: URLConvertible, data: data)
+                            let data: Data = try await fetch(url: assetURL)
+                            return .init(url: assetURL, data: data)
                         })
                     })
                     return try await task.reduce(into: [Raccoon.Response](), { results, result in
@@ -89,6 +90,32 @@ public enum Raccoon {
                 })
             }
         }
+        // ThirdParty
+        try await fetchThirdParty()
+    }
+    
+    private static func fetchThirdParty() async throws {
+        let results: [Raccoon.Response] = try await withThrowingTaskGroup(of: Raccoon.Response.self, body: { task in
+            Media.ThirdParty.Leanny.allCases.forEach({ asset in
+                task.addTask(priority: .background, operation: { [self] in
+                    let data: Data = try await fetch(url: asset.url)
+                    return .init(url: asset.assetURL, data: data)
+                })
+            })
+            Media.ThirdParty.SplatoonInk.allCases.forEach({ asset in
+                task.addTask(priority: .background, operation: { [self] in
+                    let data: Data = try await fetch(url: asset.url)
+                    return .init(url: asset.assetURL, data: data)
+                })
+            })
+            return try await task.reduce(into: [Raccoon.Response](), { results, result in
+                results.append(result)
+            })
+        })
+        Logger.info("ThirdParty: \(results.count)")
+        try results.forEach({ result in
+            try result.write()
+        })
     }
     
     @discardableResult
@@ -163,7 +190,7 @@ extension Raccoon {
         }
     }
     
-    struct Response {
+    private struct Response {
         let url: URL
         let data: Data
         

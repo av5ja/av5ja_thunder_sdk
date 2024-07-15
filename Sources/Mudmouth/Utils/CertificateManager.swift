@@ -31,9 +31,9 @@ internal class CertificateManager: ObservableObject {
     @discardableResult
     func generate() -> Configuration {
         let configuration: Configuration = .default
-#if !targetEnvironment(simulator)
+//#if !targetEnvironment(simulator)
         keychain.configuration = configuration
-#endif
+//#endif
         self.configuration = configuration
         return configuration
     }

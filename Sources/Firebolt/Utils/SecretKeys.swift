@@ -9,16 +9,18 @@
 import Foundation
 import SwiftPackageKeys
 
-internal enum SecretKeys {
+public enum SecretKeys {
     static let gameWebToken: String = {
-        guard let value: String = SwiftPackageKeys.gameWebToken.value else {
+        guard let value: String = SwiftPackageKeys.gameWebToken.value
+        else {
             fatalError("GameWebToken is not set")
         }
         return value
     }()
     
     static let bulletToken: String = {
-        guard let value: String = SwiftPackageKeys.bulletToken.value else {
+        guard let value: String = SwiftPackageKeys.bulletToken.value
+        else {
             fatalError("BulletToken is not set")
         }
         return value

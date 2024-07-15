@@ -9,13 +9,15 @@
 import NetworkExtension
 import OSLog
 import SwiftUI
+import AlertKit
+import Thunder
 
 public struct Connect: View {
     @StateObject private var manager: RequestManager = .init()
     @State private var status: NEVPNStatus = .invalid
     // swiftlint:disable:next attributes
     @Environment(\.scenePhase) private var scenePhase
-
+    
     public init() {}
 
     public var body: some View {
@@ -23,7 +25,11 @@ public struct Connect: View {
             Task(priority: .background, operation: {
                 switch status {
                 case .invalid, .disconnected:
-                    try await manager.startVPNTunnel()
+                    do {
+                        try await manager.startVPNTunnel()
+                    } catch (let error) {
+                        AlertKitAPI.present(title: LocalizedType.ErrorError.description, subtitle: error.localizedDescription, icon: .error, style: .iOS17AppleMusic, haptic: .error)
+                    }
                 case .connecting, .disconnecting, .reasserting:
                     break
                 case .connected:

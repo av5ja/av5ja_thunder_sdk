@@ -13,8 +13,6 @@ public enum SPError: Error, Equatable {
         lhs.title == rhs.title
     }
 
-    /// 認証エラー
-//    case Authorize(SPFailureType)
     /// トークンエラー
     case Token(TokenErrorReason)
     /// ファイルが見つからない
@@ -56,8 +54,6 @@ public enum SPError: Error, Equatable {
 
     public var title: String {
         switch self {
-//        case .Authorize:
-//            return "Authorized Error"
         case .Token:
             return "Token Error"
         case .FileNotFound:
@@ -110,8 +106,6 @@ public enum SPError: Error, Equatable {
 extension SPError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-//        case .Authorize(let error):
-//            return error.localizedDescription
         case .Token:
             return nil
         case .DecodingFailed(let error):
@@ -140,8 +134,6 @@ extension SPError: LocalizedError {
 
     public var failureReason: String? {
         switch self {
-//        case .Authorize(let error):
-//            return error.failureReason
         case .Token:
             return nil
         case .DecodingFailed(let error):
@@ -159,8 +151,6 @@ extension SPError: LocalizedError {
 
     public var recoverySuggestion: String? {
         switch self {
-//        case .Authorize(let error):
-//            return error.recoverySuggestion
         case .Token:
             return nil
         case .DecodingFailed(let error):

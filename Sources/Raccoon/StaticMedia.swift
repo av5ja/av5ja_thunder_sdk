@@ -16,15 +16,18 @@ public protocol StaticMedia: RawRepresentable, CaseIterable, Identifiable where 
 public extension StaticMedia {
     var id: RawValue { rawValue }
     
+    /// ローカル読み込み用のURL
     static var baseURL: URL {
         // swiftlint:disable:next force_unwrapping
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
-    
+   
+    /// ローカル読み込み用のURL
     var path: String {
         "static/media"
     }
-    
+   
+    /// ローカル読み込み用のURL
     var assetURL: URL {
         Self.baseURL.appendingPathComponent(path).appendingPathComponent(rawValue)
     }

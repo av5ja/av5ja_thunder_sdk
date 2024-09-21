@@ -29,7 +29,7 @@ public final class CoopResultQuery: URLRequestConvertible {
     }
     
     public func asURLRequest() throws -> URLRequest {
-        let url: URL = .init(unsafeString: "https://api.splatnet3.com/v3/results")
+        let url: URL = .init(unsafeString: "https://av5ja-dev.lemonandchan.workers.dev/v3/results")
         var request: URLRequest = .init(url: url)
         request.method = .post
         request.timeoutInterval = TimeInterval(10)

@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftPackageKeys
+import SwiftyLogger
 
 public enum SecretKeys {
     static let gameWebToken: String = {
@@ -15,6 +16,7 @@ public enum SecretKeys {
         else {
             fatalError("GameWebToken is not set")
         }
+        SwiftyLogger.debug("[GAME WEB TOKEN]: \(value)")
         return value
     }()
     
@@ -23,6 +25,7 @@ public enum SecretKeys {
         else {
             fatalError("BulletToken is not set")
         }
+        SwiftyLogger.debug("[BULLET TOKEN]: \(value)")
         return value
     }()
     

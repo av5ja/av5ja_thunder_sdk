@@ -12,13 +12,13 @@ import Foundation
 
 extension CoopStage.Key: URLConvertible {
     public var path: String {
-        "resources/prod/v2/stage_img/icon/high_resolution/"
+        "resources/prod/v3/stage_img/icon/high_resolution/"
     }
 }
 
 extension CoopStage.Id: URLConvertible {
     public var path: String {
-        "resources/prod/v2/stage_img/icon/high_resolution/"
+        "resources/prod/v3/stage_img/icon/high_resolution/"
     }
     
     public var assetURL: URL? {

@@ -16,7 +16,7 @@ public enum CoopEnemyInfo: Compositable {
 	public enum Key: UndefinedRawRepresentable, HashKey {
 		public typealias RawValue = String
 
-		public static let allCases: AllCases = [
+		public static let allCases: [Self] = [
 			.SakelienBomber,
 			.SakelienCupTwins,
 			.SakelienShield,
@@ -105,7 +105,7 @@ public enum CoopEnemyInfo: Compositable {
 	public enum Id: UndefinedRawRepresentable, InternalCode {
 		public typealias RawValue = Int
 
-		public static let allCases: AllCases = [
+        public static let allCases: [CoopEnemyInfo.Id] = [
 			.SakelienBomber,
 			.SakelienCupTwins,
 			.SakelienShield,

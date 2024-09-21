@@ -15,7 +15,7 @@ public extension CoopGrade {
     enum Id: UndefinedRawRepresentable, InternalCode {
         public typealias RawValue = Int
 
-        public static var allCases: [Self] {
+        public static var allCases: [CoopGrade.Id] {
             [
                 .Grade00,
                 .Grade01,

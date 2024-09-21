@@ -23,7 +23,7 @@ public final class CoopRecordQuery: DispatchType {
     public struct Response: Codable {
         public let stageRecords: [CoopStageRecord]
         public let enemyRecords: [CoopEnemyRecord]
-        public let assetURLs: [URL]
+//        public let assetURLs: [URL]
     }
 
     public struct CoopEnemyRecord: Codable {

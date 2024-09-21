@@ -463,127 +463,127 @@ public enum Media {
         }
     }
     
-    public enum ThirdParty {
-        public enum Leanny: String, CaseIterable, Identifiable {
-            /// 保存先のローカルURL
-            var assetURL: URL {
-                // swiftlint:disable:next force_unwrapping
-                let baseURL: URL = .init(string: "https://leanny.github.io")!
-                switch self {
-                case .SakeBigMouth, .Sakedozer, .SakelinenGolden:
-                    return baseURL
-                        .appendingPathComponent("resources/prod/v2/coop_enemy_img")
-                        .appendingPathComponent(id)
-                        .appendingPathExtension(for: .png)
-                default:
-                    return baseURL
-                        .appendingPathComponent("resources/prod/v2/weapon_illust")
-                        .appendingPathComponent(id)
-                        .appendingPathExtension(for: .png)
-                }
-            }
-            
-            // 取得先のURL
-            var url: URL {
-                // swiftlint:disable:next force_unwrapping
-                let baseURL: URL = .init(string: "https://leanny.github.io")!
-                switch self {
-                case .SakeBigMouth, .Sakedozer, .SakelinenGolden:
-                    return baseURL
-                        .appendingPathComponent("splat3/images/coopEnemy")
-                        .appendingPathComponent(rawValue)
-                        .appendingPathExtension(for: .png)
-                default:
-                    return baseURL
-                        .appendingPathComponent("splat3/images/weapon_flat")
-                        .appendingPathComponent(rawValue)
-                        .appendingPathExtension(for: .png)
-                }
-            }
-            
-            public var id: String {
-                switch self {
-                case .SakelinenGolden:
-                    return "a35aa2982499e9a404fdb81f72fbaf553bc47f7682cc67f9b8c32ca9910e2cbf"
-                case .Sakedozer:
-                    return "8cd6dd3e1bb480e2897afdb434315bc78876204a0995c1552084e1d3edfe0536"
-                case .SakeBigMouth:
-                    return "f0dd8c7eb5c2e96f347564cac71affe055f6c45a3339145ecc81287f800759d2"
-                case .Blaster_Bear:
-                    return "0962405d6aecff4a075c46e895c42984e33b26c4b2b4b25c5058366db3c35ba4"
-                case .Roller_Bear:
-                    return "ea9dd38bbce1cd8b879f59b5afc97a47d79cd413ad8d2fcbb504a2ac8f01036e"
-                case .Charger_Bear:
-                    return "5cc158250a207241f51d767a47bbb6139fe1c4fb652cc182b73aac93baa659c5"
-                case .Slosher_Bear:
-                    return "bf89bcf3d3a51badd78b436266e6b7927d99ac386e083023df3551da6b39e412"
-                case .Maneuver_Bear:
-                    return "411abcfee82b63a97af1613885b90daa449f4a847eff6c1d7f093b705040a9f0"
-                case .Shelter_Bear:
-                    return "3380019464e3111a0f40e633be25f73ad34ec1844d2dc7852a349b29b238932b"
-                case .Stringer_Bear:
-                    return "36e03d8d1e6bc4f7449c5450f4410c6c8449cde0548797d22ab641cd488d2060"
-                case .Saber_Bear:
-                    return "480bc1dfb0beed1ce4625a6a6b035e4bac711de019bb9b0e5125e4e7e39e0719"
-                }
-            }
-            
-            case SakeBigMouth = "SakeBigMouth"
-            case Sakedozer = "Sakedozer"
-            case SakelinenGolden = "SakelienGolden"
-            case Blaster_Bear = "Path_Wst_Blaster_Bear"
-            case Maneuver_Bear = "Path_Wst_Maneuver_Bear"
-            case Roller_Bear = "Path_Wst_Roller_Bear"
-            case Saber_Bear = "Path_Wst_Saber_Bear"
-            case Shelter_Bear = "Path_Wst_Shelter_Bear"
-            case Slosher_Bear = "Path_Wst_Slosher_Bear"
-            case Stringer_Bear = "Path_Wst_Stringer_Bear"
-            case Charger_Bear = "Path_Wst_Charger_Bear"
-        }
-        
-        public enum SplatoonInk: String, CaseIterable, Identifiable {
-            public var id: RawValue { rawValue }
-            
-            /// 保存先のローカルURL
-            var assetURL: URL {
-                // swiftlint:disable:next force_unwrapping
-                let baseURL: URL = .init(string: "https://splatoon3.ink")!
-                switch self {
-                case .RandomGreen, .RandomGold, .Unknown:
-                    return baseURL
-                        .appendingPathComponent("resources/prod/v2/ui_img")
-                        .appendingPathComponent(id)
-                        .appendingPathExtension(for: .png)
-                default:
-                    return baseURL
-                        .appendingPathComponent("resources/prod/v2/stage_img/icon/high_resolution")
-                        .appendingPathComponent(id)
-                        .appendingPathExtension(for: .png)
-                }
-            }
-            
-            // 取得先のURL
-            var url: URL {
-                // swiftlint:disable:next force_unwrapping
-                let baseURL: URL = .init(string: "https://splatoon3.ink")!
-                switch self {
-                case .RandomGreen, .RandomGold, .Unknown:
-                    return baseURL
-                        .appendingPathComponent("assets/splatnet/v2/ui_img")
-                        .appendingPathComponent(rawValue)
-                        .appendingPathExtension(for: .png)
-                default:
-                    return baseURL
-                        .appendingPathComponent("assets/splatnet/v2/stage_img/icon/high_resolution")
-                        .appendingPathComponent(rawValue)
-                        .appendingPathExtension(for: .png)
-                }
-            }
-            
-            case RandomGreen = "a23d035e2f37c502e85b6065ba777d93f42d6ca7017ed029baac6db512e3e17f_0"
-            case RandomGold = "9d7272733ae2f2282938da17d69f13419a935eef42239132a02fcf37d8678f10_0"
-            case Unknown = "473fffb2442075078d8bb7125744905abdeae651b6a5b7453ae295582e45f7d1_0"
-            case Random = "53e1af84e02048eaf93c283489026a92d3a170eb3ebdf300c124cbe4e553e63b_0"
-        }
-    }
+//    public enum ThirdParty {
+//        public enum Leanny: String, CaseIterable, Identifiable {
+//            /// 保存先のローカルURL
+//            var assetURL: URL {
+//                // swiftlint:disable:next force_unwrapping
+//                let baseURL: URL = .init(string: "https://leanny.github.io")!
+//                switch self {
+//                case .SakeBigMouth, .Sakedozer, .SakelinenGolden:
+//                    return baseURL
+//                        .appendingPathComponent("resources/prod/v3/coop_enemy_img")
+//                        .appendingPathComponent(id)
+//                        .appendingPathExtension(for: .png)
+//                default:
+//                    return baseURL
+//                        .appendingPathComponent("resources/prod/v3/weapon_illust")
+//                        .appendingPathComponent(id)
+//                        .appendingPathExtension(for: .png)
+//                }
+//            }
+//            
+//            // 取得先のURL
+//            var url: URL {
+//                // swiftlint:disable:next force_unwrapping
+//                let baseURL: URL = .init(string: "https://leanny.github.io")!
+//                switch self {
+//                case .SakeBigMouth, .Sakedozer, .SakelinenGolden:
+//                    return baseURL
+//                        .appendingPathComponent("splat3/images/coopEnemy")
+//                        .appendingPathComponent(rawValue)
+//                        .appendingPathExtension(for: .png)
+//                default:
+//                    return baseURL
+//                        .appendingPathComponent("splat3/images/weapon_flat")
+//                        .appendingPathComponent(rawValue)
+//                        .appendingPathExtension(for: .png)
+//                }
+//            }
+//            
+//            public var id: String {
+//                switch self {
+//                case .SakelinenGolden:
+//                    return "a35aa2982499e9a404fdb81f72fbaf553bc47f7682cc67f9b8c32ca9910e2cbf"
+//                case .Sakedozer:
+//                    return "8cd6dd3e1bb480e2897afdb434315bc78876204a0995c1552084e1d3edfe0536"
+//                case .SakeBigMouth:
+//                    return "f0dd8c7eb5c2e96f347564cac71affe055f6c45a3339145ecc81287f800759d2"
+//                case .Blaster_Bear:
+//                    return "0962405d6aecff4a075c46e895c42984e33b26c4b2b4b25c5058366db3c35ba4"
+//                case .Roller_Bear:
+//                    return "ea9dd38bbce1cd8b879f59b5afc97a47d79cd413ad8d2fcbb504a2ac8f01036e"
+//                case .Charger_Bear:
+//                    return "5cc158250a207241f51d767a47bbb6139fe1c4fb652cc182b73aac93baa659c5"
+//                case .Slosher_Bear:
+//                    return "bf89bcf3d3a51badd78b436266e6b7927d99ac386e083023df3551da6b39e412"
+//                case .Maneuver_Bear:
+//                    return "411abcfee82b63a97af1613885b90daa449f4a847eff6c1d7f093b705040a9f0"
+//                case .Shelter_Bear:
+//                    return "3380019464e3111a0f40e633be25f73ad34ec1844d2dc7852a349b29b238932b"
+//                case .Stringer_Bear:
+//                    return "36e03d8d1e6bc4f7449c5450f4410c6c8449cde0548797d22ab641cd488d2060"
+//                case .Saber_Bear:
+//                    return "480bc1dfb0beed1ce4625a6a6b035e4bac711de019bb9b0e5125e4e7e39e0719"
+//                }
+//            }
+//            
+//            case SakeBigMouth = "SakeBigMouth"
+//            case Sakedozer = "Sakedozer"
+//            case SakelinenGolden = "SakelienGolden"
+//            case Blaster_Bear = "Path_Wst_Blaster_Bear"
+//            case Maneuver_Bear = "Path_Wst_Maneuver_Bear"
+//            case Roller_Bear = "Path_Wst_Roller_Bear"
+//            case Saber_Bear = "Path_Wst_Saber_Bear"
+//            case Shelter_Bear = "Path_Wst_Shelter_Bear"
+//            case Slosher_Bear = "Path_Wst_Slosher_Bear"
+//            case Stringer_Bear = "Path_Wst_Stringer_Bear"
+//            case Charger_Bear = "Path_Wst_Charger_Bear"
+//        }
+//        
+//        public enum SplatoonInk: String, CaseIterable, Identifiable {
+//            public var id: RawValue { rawValue }
+//            
+//            /// 保存先のローカルURL
+//            var assetURL: URL {
+//                // swiftlint:disable:next force_unwrapping
+//                let baseURL: URL = .init(string: "https://splatoon3.ink")!
+//                switch self {
+//                case .RandomGreen, .RandomGold, .Unknown:
+//                    return baseURL
+//                        .appendingPathComponent("resources/prod/v3/ui_img")
+//                        .appendingPathComponent(id)
+//                        .appendingPathExtension(for: .png)
+//                default:
+//                    return baseURL
+//                        .appendingPathComponent("resources/prod/v3/stage_img/icon/high_resolution")
+//                        .appendingPathComponent(id)
+//                        .appendingPathExtension(for: .png)
+//                }
+//            }
+//            
+//            // 取得先のURL
+//            var url: URL {
+//                // swiftlint:disable:next force_unwrapping
+//                let baseURL: URL = .init(string: "https://splatoon3.ink")!
+//                switch self {
+//                case .RandomGreen, .RandomGold, .Unknown:
+//                    return baseURL
+//                        .appendingPathComponent("assets/splatnet/v3/ui_img")
+//                        .appendingPathComponent(rawValue)
+//                        .appendingPathExtension(for: .png)
+//                default:
+//                    return baseURL
+//                        .appendingPathComponent("assets/splatnet/v3/stage_img/icon/high_resolution")
+//                        .appendingPathComponent(rawValue)
+//                        .appendingPathExtension(for: .png)
+//                }
+//            }
+//            
+//            case RandomGreen = "a23d035e2f37c502e85b6065ba777d93f42d6ca7017ed029baac6db512e3e17f_0"
+//            case RandomGold = "9d7272733ae2f2282938da17d69f13419a935eef42239132a02fcf37d8678f10_0"
+//            case Unknown = "473fffb2442075078d8bb7125744905abdeae651b6a5b7453ae295582e45f7d1_0"
+//            case Random = "53e1af84e02048eaf93c283489026a92d3a170eb3ebdf300c124cbe4e553e63b_0"
+//        }
+//    }
 }

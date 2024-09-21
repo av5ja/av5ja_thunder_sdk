@@ -69,7 +69,7 @@ open class Firebolt: Session {
             throw SPError.Unauthorized
         }
     }
-    
+   
     /// <#Description#>
     /// - Returns: <#description#>
     open func getCoopRecord() async throws -> CoopRecordQuery.Response {
@@ -168,6 +168,7 @@ extension Firebolt: Authenticator {
         urlRequest.headers.add(.userAgent(SecretKeys.userAgent))
         urlRequest.headers.add(name: "X-Web-View-Ver", value: SecretKeys.xWebViewVer)
         #else
+        SwiftyLogger.debug(credential.gameWebToken)
         urlRequest.headers.add(.authorization(bearerToken: credential.bulletToken.token))
         urlRequest.headers.add(.userAgent(credential.userAgent))
         urlRequest.headers.add(name: "X-Web-View-Ver", value: credential.version)

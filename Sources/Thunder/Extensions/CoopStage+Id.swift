@@ -15,7 +15,7 @@ extension CoopStage {
     public enum Id: UndefinedRawRepresentable, HashKey {
         public typealias RawValue = Int
         
-        public static var allCases: [Self] {
+        public static var allCases: [CoopStage.Id] {
             [
                 .Carousel,
                 .District,
@@ -32,6 +32,7 @@ extension CoopStage {
                 .Tutorial,
                 .Unknown,
                 .Upland,
+                .Manbou
             ]
         }
         
@@ -39,7 +40,7 @@ extension CoopStage {
             rawValue >= 100
         }
         
-        public static let regular: [Self] = [
+        public static let regular: [CoopStage.Id] = [
             .Shakedent,
             .Shakehighway,
             .Shakelift,
@@ -49,7 +50,7 @@ extension CoopStage {
             .Shakeup,
         ]
         
-        public static let bigRun: [Self] = [
+        public static let bigRun: [CoopStage.Id] = [
             .Carousel,
             .District,
             .Factory,
@@ -58,6 +59,7 @@ extension CoopStage {
             .Tutorial,
             .Unknown,
             .Upland,
+            .Manbou
         ]
         
         public var rawValue: RawValue {
@@ -70,6 +72,8 @@ extension CoopStage {
                 return 104
             case .Section:
                 return 105
+            case .Manbou:
+                return 107
             case .Shakedent:
                 return 7
             case .Shakehighway:
@@ -112,6 +116,7 @@ extension CoopStage {
         case Tutorial
         case Unknown
         case Upland
+        case Manbou
         case Undefined(RawValue)
     }
 }

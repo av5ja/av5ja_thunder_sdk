@@ -14,9 +14,9 @@ extension WeaponInfoMain.Key: URLConvertible {
     public var path: String {
         switch self {
         case .RandomGold, .RandomGreen, .Dummy:
-            return "resources/prod/v2/ui_img"
+            return "resources/prod/v3/ui_img"
         default:
-            return "resources/prod/v2/weapon_illust"
+            return "resources/prod/v3/weapon_illust"
         }
     }
 }
@@ -25,9 +25,9 @@ extension WeaponInfoMain.Id: URLConvertible {
     public var path: String {
         switch self {
         case .RandomGold, .RandomGreen, .Dummy:
-            return "resources/prod/v2/ui_img"
+            return "resources/prod/v3/ui_img"
         default:
-            return "resources/prod/v2/weapon_illust"
+            return "resources/prod/v3/weapon_illust"
         }
     }
     

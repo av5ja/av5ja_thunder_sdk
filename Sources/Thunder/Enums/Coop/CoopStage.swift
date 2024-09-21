@@ -14,7 +14,7 @@ public enum CoopStage: Compositable {
 	public enum Key: UndefinedRawRepresentable, HashKey {
 		public typealias RawValue = String
 
-		public static let allCases: AllCases = [
+        public static let allCases: [CoopStage.Key] = [
 			.Carousel,
 			.District,
 			.Factory,
@@ -30,6 +30,7 @@ public enum CoopStage: Compositable {
 			.Tutorial,
 			.Unknown,
 			.Upland,
+            .Manbou
 		]
 
 		public var rawValue: RawValue {
@@ -64,6 +65,8 @@ public enum CoopStage: Compositable {
 				return "e5c5889e3e4278352283021adc2b1a8cf07fed973d216c7739804b38f418ba93"
 			case .Upland:
 				return "3598b7f54248b84c47cde6b99aa45ff296a41d3d5f38eaccfe2327b2874fff0b"
+            case .Manbou:
+                return "ce5d79560bec8d71581d5233dc5ebe437b28dad99891ece0d35c4cf0c003b057"
 			case .Undefined(let rawValue):
 				return rawValue
 			}
@@ -84,6 +87,7 @@ public enum CoopStage: Compositable {
 		case Tutorial
 		case Unknown
 		case Upland
+        case Manbou
 		case Undefined(RawValue)
 	}
 }

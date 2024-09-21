@@ -10,4 +10,5 @@ import Foundation
 
 public extension WeaponInfoMain.Id {
     static let regular: AllCases = allCases.filter({ $0.rawValue < 20_000 && $0.rawValue >= 0 })
+    static let bear: AllCases = allCases.filter({ $0.rawValue > 20_000 && $0.rawValue >= 0 })
 }

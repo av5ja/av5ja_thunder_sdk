@@ -11,7 +11,7 @@
 import Foundation
 
 extension CoopEnemyInfo.Id {
-    public static var regular: [Self] {
+    public static var regular: AllCases {
         allCases.filter({ $0.rawValue <= 20 })
     }
 }

@@ -20,6 +20,6 @@ public final class WeaponRecordQuery: DispatchType {
     init() {}
     
     public struct Response: Codable {
-        public let assetURLs: [URL]
+//        public let assetURLs: [URL]
     }
 }

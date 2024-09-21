@@ -61,7 +61,7 @@ public final class CoopScheduleQuery: URLRequestConvertible {
     }
     
     public func asURLRequest() throws -> URLRequest {
-        let url: URL = .init(unsafeString: "https://api.splatnet3.com/v3/schedules")
+        let url: URL = .init(unsafeString: "https://av5ja-dev.lemonandchan.workers.dev/v3/schedules")
         var request: URLRequest = .init(url: url)
         request.method = .get
         request.timeoutInterval = TimeInterval(10)

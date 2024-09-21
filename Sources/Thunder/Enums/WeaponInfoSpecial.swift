@@ -16,7 +16,7 @@ public enum WeaponInfoSpecial: Compositable {
 	public enum Key: UndefinedRawRepresentable, HashKey {
 		public typealias RawValue = String
 
-		public static let allCases: AllCases = [
+		public static let allCases: [Self] = [
 			.RandomGreen,
 			.SpUltraShot,
 			.SpNiceBall,
@@ -81,7 +81,7 @@ public enum WeaponInfoSpecial: Compositable {
 	public enum Id: UndefinedRawRepresentable, InternalCode {
 		public typealias RawValue = Int
 
-		public static let allCases: AllCases = [
+		public static let allCases: [Self] = [
 			.RandomGreen,
 			.SpUltraShot,
 			.SpNiceBall,

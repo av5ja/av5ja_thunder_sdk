@@ -28,7 +28,7 @@ extension DispatchType {
         .init(string: "https://api.splatnet3.com")!
 #else
         // swiftlint:disable:next force_unwrapping
-        .init(string: "https://api.splatnet3.com")!
+        .init(string: "https://av5ja-dev.lemonandchan.workers.dev")!
 #endif
     }
     
@@ -41,7 +41,7 @@ extension DispatchType {
         case .CoopRecordQuery:
             return "v\(version)/records"
         case .WeaponRecordQuery:
-            return "v\(version)/records/weapons"
+            return "v\(version)/weapon_records"
         default:
             fatalError("This Query Is Not Implemented")
         }

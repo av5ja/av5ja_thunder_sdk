@@ -12,13 +12,13 @@ import Foundation
 
 extension WeaponInfoSpecial.Key: URLConvertible {
     public var path: String {
-        "resources/prod/v2/special_img/blue"
+        "resources/prod/v3/special_img/blue"
     }
 }
 
 extension WeaponInfoSpecial.Id: URLConvertible {
     public var path: String {
-        "resources/prod/v2/special_img/blue"
+        "resources/prod/v3/special_img/blue"
     }
     
     public var assetURL: URL? {
